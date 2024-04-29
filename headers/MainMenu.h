@@ -24,12 +24,21 @@ protected:
 
 class MenuSettings : public IMenu {
 protected:
+    void listGuide(){
+        cout << "Перед началом работы необходимо:" << endl;
+        cout << "Осмотреть станину на наличие трещин и деформаций" << endl;
+        cout << "Проверить люфт валов" << endl;
+        cout << "Откалибровать фотодатчики" << endl;
+        cout << "Запустить станок на холостом ходу на время не менее 5 минут" << endl;
+        cout << "Приступить к работе" << endl;
+    }
     void listHelp() override {
         cout << "Список команд" << endl;
         cout << "setaccuracy VALUE[2-256] - устанавливает количество симулируемых программой сегментов" << endl;
         cout << "setspeed VALUE[1-8] - устанаваливает множитель скорости симуляции" << endl;
         cout << "chmod - меняет режим  с ручного на автоматический и обратно" << endl;
         cout << "start - начинает процедуру запуска машины" << endl;
+        cout << "guide - вывод техники безопасности" << endl;
     };
 
     int setAccuracy(int a) override {
@@ -89,6 +98,8 @@ public:
                 //напистаь процедуру запуска
             } else if (action == "help") {
                 this->listHelp();
+            } else if (action == "guide") {
+                this->listGuide();
             }
         }
     }

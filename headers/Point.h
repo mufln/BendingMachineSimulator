@@ -4,15 +4,14 @@
 
 #ifndef KURSACH_POINT_H
 #define KURSACH_POINT_H
+#include "Machine.h"
 
 
-class Point {
-private:
-    const Point* nextPoint;
-    float nextPointAngle = 0 ;
+class Point: public Machine::IBar::ISegment::IPoint{
+protected:
+    float nextPointAngle = 180 ;
 public:
-    Point();
-
+    Point(){};
 };
 
 

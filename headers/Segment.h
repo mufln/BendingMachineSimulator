@@ -1,18 +1,15 @@
 //
 // Created by MuFln on 28.04.2024.
 //
-#include <iostream>
-#include "Point.h"
-
+#include "Machine.h"
 #ifndef KURSACH_SEGMENT_H
 #define KURSACH_SEGMENT_H
 
-class Segment {
-private:
-    std::vector<Point>;
-    void generatePoints();
+class Segment: public Machine::IBar::ISegment{
 public:
-    Segment();
+    Segment(std::vector<Machine::IBar::ISegment::IPoint*> points){
+        this->points = points;
+    };
 };
 
 

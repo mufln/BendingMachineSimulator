@@ -12,8 +12,7 @@ public:
     Shaft(float angle) {
         this->POSTANGLE = angle;
     };
-
-    void Bend(Machine::IBar bar) override{
+    void Bend(Machine::IBar::ISegment* bar) override{
 
     };
 };

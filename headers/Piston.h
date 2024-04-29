@@ -7,8 +7,7 @@
 #define KURSACH_PISTON_H
 class Piston: public Machine::IPiston{
 public:
-    void PullOut(Machine::IBar bar, std::vector<Machine:: IBar> a) override{
-
+    void pullOut(Machine::IBar* bar, std::vector<Machine:: IBar*> a) override{
     };
 };
 
