@@ -12,6 +12,13 @@ protected:
     float nextPointAngle = 180 ;
 public:
     Point(){};
+    void setAngle(float angle) override{
+        nextPointAngle -= angle;
+    };
+    float getAngle() override{
+        return nextPointAngle;
+    };
+
 };
 
 

@@ -16,3 +16,6 @@ add_executable(Kursach
 #        headers/MainMenu.h
 )
 target_include_directories(Kursach PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/headers")
+find_package(Curses REQUIRED)
+include_directories(${CURSES_INCLUDE_DIR})
+target_link_libraries(Kursach ${CURSES_LIBRARIES})

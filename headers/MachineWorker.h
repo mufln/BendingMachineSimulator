@@ -9,18 +9,22 @@
 #include "MainMenu.h"
 #include <unistd.h>
 class MachineWorker{
-//реализовать метод который принимает bar и полную цепочку машины, сделать цикл while с счетчиком i
-//счетчик указывает на сколько шагов продивнулся bar -> при i=0 первый сегмент находится в первом вале
-//при i=n первый сегмент находится в n вале(датчике/поршне и так далее, если выходит за индекс - переходит в следущий тип)
-//
 protected:
     static int accuracy;
     static Machine* machine;
     static void loop(){
-        Bar* bar = IBarFactory::generateBar(accuracy);
-        machine->processP(bar);
-        bar = IBarFactory::generateBar(accuracy);
-        machine->processC(bar);
+        std::vector<Machine::IBar*> bars = std::vector<Machine::IBar*>();
+        for(int i=0;i<1000;i++){
+            bars.push_back(IBarFactory::generateBar(accuracy));
+        }
+        machine->fillContainer(bars);
+        machine->render->Start();
+        for(int i = 0; i<500;i++){
+            machine->processP();
+            machine->processC();
+        }
+        machine->render->Stop();
+        cout<<"Смена закончена, непрокатанных листов больше нет"<<endl;
     }
 public:
     static void prepare(){
