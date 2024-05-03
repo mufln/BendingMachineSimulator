@@ -12,5 +12,7 @@
 #include "Segment.h"
 #include "Sensor.h"
 #include "Shaft.h"
+#include "MachineRenderer.h"
+
 
 #endif //KURSACH_ESSENTIAL_H

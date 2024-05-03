@@ -1,4 +1,5 @@
 /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/Applications/CLion.app/Contents/bin/ninja/mac/ninja -G Ninja -S /Users/mufln/CLionProjects/Kursach -B /Users/mufln/CLionProjects/Kursach/cmake-build-debug
--- Configuring done (0.0s)
+-- Found Curses: /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/lib/libcurses.tbd  
+-- Configuring done (0.6s)
 -- Generating done (0.0s)
 -- Build files have been written to: /Users/mufln/CLionProjects/Kursach/cmake-build-debug

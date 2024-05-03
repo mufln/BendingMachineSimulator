@@ -7,6 +7,7 @@
 #include "Essential.h"
 class IMachineFactory {
 protected:
+    static const int DELAY;
     static Machine* machine;
     static std::vector<Machine::IPiston*> generatePistons(){
         std::vector<Machine::IPiston*> Pistons = std::vector<Machine::IPiston*>();
@@ -20,10 +21,10 @@ protected:
     static std::vector<Machine::IShaft*> generateShaftC(){
         std::vector<Machine::IShaft*> ShaftC = std::vector<Machine::IShaft*>();
         for(int i=0;i<5;i++){
-            ShaftC.push_back(new Shaft(180-90*(float(i+1)/10)));
+            ShaftC.push_back(new Shaft(90/5,1,3));
         }
         for(int i=0;i<5;i++){
-            ShaftC.push_back(new Shaft(180-90*(float(i+1)/10)));
+            ShaftC.push_back(new Shaft(90/5,0,4));
         }
         return ShaftC;
     }
@@ -32,7 +33,7 @@ protected:
     static std::vector<IMachine::IShaft*> generateShaftP(){
         std::vector<IMachine:: IShaft*> ShaftP = std::vector<IMachine:: IShaft*>();
         for(int i=0;i<10;i++){
-            ShaftP.push_back(new Shaft(180-90*(float(i)/10)));
+            ShaftP.push_back(new Shaft(9,1,3));
         }
         return ShaftP;
     }
@@ -40,11 +41,17 @@ protected:
 
     static std::vector<Machine:: ISensor*> generateSensors(){
         std::vector<Machine:: ISensor*> Sensors = std::vector<Machine:: ISensor*>();
-        for(int i = 0;i<3;i++){
-            Sensors.push_back(new Sensor());
-        }
+        Sensors.push_back(new Sensor(1,3));
+        Sensors.push_back(new Sensor(1,3));
+        Sensors.push_back(new Sensor(0,4));
         return Sensors;
     }
+
+
+    static IMachine::IMachineRenderer* generateRenderer(){
+        return MahineRenderer::getInstance();
+    }
+
 
 public:
     static void prepareMachine(bool mode, int speed, int accuracy){
@@ -58,9 +65,12 @@ public:
         cout<<"Установлены поршни"<<endl;
         machine->prepareSensors(IMachineFactory::generateSensors());
         cout<<"Установлены фотодатчики"<<endl;
+        machine->prepareRenderer(generateRenderer());
+        cout<<"Установлен GUI"<<endl;
         cout<<"Генерация станка завершена"<<endl;
+        system("clear");
     }
 };
 Machine* IMachineFactory::machine = nullptr;
-
+const int IMachineFactory::DELAY=100000;
 #endif //KURSACH_MACHINEFACTORY_H
